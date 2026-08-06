@@ -76,3 +76,5 @@ export class RegistrationPage
       this.setMsgConfirmation();
  }
 }
+
+// in progress
