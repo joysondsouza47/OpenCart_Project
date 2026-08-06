@@ -75,9 +75,4 @@ export class RegistrationPage
       this.clickContinueButton();
       this.setMsgConfirmation();
  }
-
-
-
-
-
 }
