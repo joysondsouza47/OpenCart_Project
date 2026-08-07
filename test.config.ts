@@ -5,7 +5,7 @@ export class TestConfig
     //appUrl="http://localhost/opencart/upload/admin/"
 
     //valid login credentials- create your own login account 
-    email = "joysondsouza47@gmail.com"
+    email = "joysondsouza37@gmail.com"
     password = "Joysan@2914"
 
     //product details 

@@ -14,8 +14,6 @@ export class RegistrationPage
  private readonly btnContinue: Locator;
  private readonly msgConfirmation: Locator;
  
-
-
  constructor(page:Page)
  {
     this.page = page;
@@ -25,8 +23,8 @@ export class RegistrationPage
     this.txtEmail = page.locator("//input[@id='input-email']");
     this.txtPassword = page.locator("//input[@id='input-password']");
     this.chkPolicy = page.locator("//input[@name='agree']");
-    this.btnContinue = page.locator("//page.getByRole('button', { name: 'Continue' })");
-    this.msgConfirmation = page.locator("await page.locator('h1').filter({ hasText: 'Your Account Has Been Created!' })");
+    this.btnContinue = page.getByRole('button', { name: 'Continue' });
+    this.msgConfirmation = page.getByRole('heading', { name: 'Your Account Has Been Created!' });
  }
 
 
@@ -65,15 +63,15 @@ export class RegistrationPage
     lastname:string;
     email:string;
     password:string;
- })
+ }):Promise<string>
  {
-      this.setFirstName(userData.firstName);
-      this.setLastName(userData.lastname);
-      this.setEmail(userData.email);
-      this.setPassword(userData.password);
-      this.PrivacyCheck();
-      this.clickContinueButton();
-      this.setMsgConfirmation();
+      await this.setFirstName(userData.firstName);
+      await this.setLastName(userData.lastname);
+      await this.setEmail(userData.email);
+      await this.setPassword(userData.password);
+      await this.PrivacyCheck();
+      await this.clickContinueButton();
+      return await this.setMsgConfirmation();
  }
 }
 
