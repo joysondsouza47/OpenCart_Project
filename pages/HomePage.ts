@@ -20,7 +20,7 @@ export class HomePage
         this.linkRegister = page.getByRole('link', { name: 'Register' });
         this.linkLogin = page.getByRole('link', { name: 'Login' });
         this.linkSearchBox = page.getByRole('textbox', { name: 'Search' });
-        this.btnSearch = page.locator('button.btn.btn-light.btn-lg');
+        this.btnSearch = page.locator('button.btn.btn-default.btn-lg');
     }
 
     //action methods
@@ -74,11 +74,11 @@ export class HomePage
         }
     }
 
-    async enterProductName()
+    async enterProductName(product:string)
     {
         try
         {
-           await this.linkSearchBox.click();
+           await this.linkSearchBox.fill(product);
         }
         catch(error)
         {

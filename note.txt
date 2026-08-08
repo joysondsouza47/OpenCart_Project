@@ -1,2 +1,4 @@
 http://localhost/opencart/upload/
 http://localhost/opencart/upload/admin/
+
+https://tutorialsninja.com/demo/
