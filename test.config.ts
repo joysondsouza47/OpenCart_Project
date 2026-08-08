@@ -1,8 +1,9 @@
 export class TestConfig 
 {
 
-    appUrl = "http://localhost/opencart/upload/"
+    //appUrl = "http://localhost/opencart/upload/"
     //appUrl="http://localhost/opencart/upload/admin/"
+    appUrl = "https://tutorialsninja.com/demo/"
 
     //valid login credentials- create your own login account 
     email = "joysondsouza37@gmail.com"

@@ -34,19 +34,21 @@ test.beforeEach("Page URL", async ({ page }) => {
 })
 
 test.afterEach("Page Logout", async ({ page }) => {
-    await page.waitForTimeout(2000);
+    //await page.waitForTimeout(2000);
     await page.close();
 })
 
-test("User registration test", async () => {
+test("User registration test  @master @sanity @regression", async () => {
     await homepage.clickMyAccount();
     await homepage.clickRegister();
 
     await registrationPage.setFirstName(RandomDataUtil.getRandomFirstName());
-    await registrationPage.setFirstName(RandomDataUtil.getRandomFirstName());
     await registrationPage.setLastName(RandomDataUtil.getRandomLastName());
     await registrationPage.setEmail(RandomDataUtil.getRandomEmail());
-    await registrationPage.setPassword(RandomDataUtil.getRanPassword());
+    await registrationPage.setPhonenumber(RandomDataUtil.getRandomPhoneNumber());   //additional
+    const password = RandomDataUtil.getRanPassword();   
+    await registrationPage.setPassword(password);
+    await registrationPage.setConfirmPassword(password);    //additional
     await registrationPage.PrivacyCheck();
     await registrationPage.clickContinueButton();
     const confirmationMsg = await registrationPage.setMsgConfirmation();

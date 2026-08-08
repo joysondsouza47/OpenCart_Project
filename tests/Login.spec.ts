@@ -1,34 +1,60 @@
-import {test,expect} from "@playwright/test";
-import { HomePage } from "../pages/HomePage";   
-import { LoginPage } from "../pages/LoginPage";
-import { TestConfig } from "../test.config";
+/**
+ * Test Case: Login with Valid Credentials
+ * 
+ * Tags: @master @sanity @regression
+ * 
+ * Steps:
+ * 1) Navigate to the application URL
+ * 2) Navigate to Login page via Home page
+ * 3) Enter valid credentials and log in
+ * 4) Verify successful login by checking 'My Account' page presence
+ */
 
+import { test, expect } from '@playwright/test';
+import { HomePage } from '../pages/HomePage';
+import { LoginPage } from '../pages/LoginPage';
+import { MyAccountPage } from '../pages/MyAccountPage';
+import { TestConfig } from '../test.config';
 
-let homepage: HomePage;
 let config: TestConfig;
-let loginpage: LoginPage;
+let homePage: HomePage;
+let loginPage: LoginPage;
+let myAccountPage: MyAccountPage;
 
-test.beforeEach("Page URL", async ({ page }) => 
-{
-    config = new TestConfig(); 
-    await page.goto(config.appUrl);
+// This hook runs before each test
+test.beforeEach(async ({ page }) => {
+  config = new TestConfig(); // Load config (URL, credentials)
+  await page.goto(config.appUrl); // Navigate to base URL
 
-    homepage = new HomePage(page);
-    loginpage = new LoginPage(page);
+  // Initialize page objects
+  homePage = new HomePage(page);
+  loginPage = new LoginPage(page);
+  myAccountPage = new MyAccountPage(page);
+});
 
-})
-
-test.afterEach("Page Logout", async ({ page }) => {
-    await page.waitForTimeout(2000);
-    await page.close();
-})
+// Optional cleanup after each test
+test.afterEach(async ({ page }) => {
+  await page.close(); // Close browser tab (good practice in local/dev run)
+});
 
 
-test('user login test',async()=>{
+test('User login test @master @sanity @regression',async()=>{
 
-    await homepage.clickMyAccount();
-    await homepage.clickLogin();
-    await loginpage.login(config.email,config.password);
-    //await loginpage.errorMessage();
+    //Navigate to Login page via Home page
+
+    await homePage.clickMyAccount();
+    await homePage.clickLogin();
+
+    //Enter valid credentials and log in
+    await loginPage.setEmailAddress(config.email);
+    await loginPage.setPassword(config.password);
+    await loginPage.clickLoginButton();
+
+    //alternatevly
+    //await loginPage.login(config.email,config.password);
+
+    //Verify successful login by checking 'My Account' page presence
+    const isLoggedIn=await myAccountPage.isMyAccountPageExists();
+    expect(isLoggedIn).toContain("My Account");
 
 })
