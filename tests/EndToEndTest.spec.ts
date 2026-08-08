@@ -166,6 +166,10 @@ async function verifyShoppingCart(page: Page) {
     
     // Validate that total price is correct (based on config)
     expect(await shoppingCartPage.getTotalPrice()).toBe(config.totalPrice);
+
+    await shoppingCartPage.clearcart();
+    
+    expect(await shoppingCartPage.Clearcartmessage()).toContain("Your shopping cart is empty!");
 }
 
 

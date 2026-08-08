@@ -7,6 +7,8 @@ export class ShoppingCartPage {
     // Locators using CSS selectors
     private readonly lblTotalPrice: Locator;
     private readonly btnCheckout: Locator;
+    private readonly clrcart: Locator;
+    private readonly clearcartmessage: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -14,6 +16,9 @@ export class ShoppingCartPage {
         // Initialize locators with CSS selectors
         this.lblTotalPrice = page.locator("//*[@id='content']/div[2]/div/table//strong[text()='Total:']//following::td");
         this.btnCheckout = page.locator("a[class='btn btn-primary']");
+        this.clrcart = page.locator("//i[@class='fa fa-times-circle']");
+        this.clearcartmessage = page.locator('p').filter({ hasText: 'Your shopping cart is empty!' }).first()
+
     }
 
     /**
@@ -49,4 +54,14 @@ export class ShoppingCartPage {
             return false;
         }
     }
+    async clearcart()
+    {
+        await this.clrcart.click();
+    }
+    
+    async Clearcartmessage():Promise<string>
+    {
+    return this.clearcartmessage.innerText();
+    }
+
 }

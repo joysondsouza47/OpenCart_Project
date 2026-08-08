@@ -6,7 +6,7 @@ export class TestConfig
     appUrl = "https://tutorialsninja.com/demo/"
 
     //valid login credentials- create your own login account 
-    email = "joysondsouza37@gmail.com"
+    email = "joysondsouza47@gmail.com"
     password = "Joysan@2914"
 
     //product details 
