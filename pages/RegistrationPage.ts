@@ -64,7 +64,7 @@ export class RegistrationPage
  {
     await this.btnContinue.click();
  }
-  async setMsgConfirmation():Promise<string>
+  async getConfirmationMsg():Promise<string>
  {
     return await this.msgConfirmation.textContent() ?? '';
  }
@@ -85,6 +85,6 @@ export class RegistrationPage
       await this.setConfirmPassword(userData.password);   //additional
       await this.PrivacyCheck();
       await this.clickContinueButton();
-      return await this.setMsgConfirmation();
+      return await this.getConfirmationMsg();
  }
 }

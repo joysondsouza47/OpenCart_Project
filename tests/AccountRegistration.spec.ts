@@ -51,7 +51,7 @@ test("User registration test  @master @sanity @regression", async () => {
     await registrationPage.setConfirmPassword(password);    //additional
     await registrationPage.PrivacyCheck();
     await registrationPage.clickContinueButton();
-    const confirmationMsg = await registrationPage.setMsgConfirmation();
+    const confirmationMsg = await registrationPage.getConfirmationMsg();
 
     expect(confirmationMsg).toContain('Your Account Has Been Created!');
 
