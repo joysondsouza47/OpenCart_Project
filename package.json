@@ -11,7 +11,9 @@
   "test:datadriven": "playwright test --grep @datadriven", 
   "test:master:headed": "playwright test --grep @master --headed", 
   "test:sanity:debug": "playwright test --grep @sanity --debug", 
-  "test:all": "playwright test --headed"
+  "test:endtoend": "playwright test --grep @end-to-end --debug", 
+  "test:all": "playwright test --headed", 
+  "test:all:headless": "playwright test"
 
   },
   "keywords": [],
