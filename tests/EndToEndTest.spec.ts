@@ -1,17 +1,17 @@
-/**
- * Test Case: End-to-End Test on Demo E-commerce Application
- *
- * Purpose:
- * This test simulates a complete user flow on an e-commerce site.
- * 
- * Steps:
- * 1) Register a new account
- * 2) Logout after registration
- * 3) Login with the same account
- * 4) Search for a product and add it to the shopping cart
- * 5) Verify cart contents
- * 6) Attempt checkout (disabled since feature isn't available on demo site)
- */
+// /**
+//  * Test Case: End-to-End Test on Demo E-commerce Application
+//  *
+//  * Purpose:
+//  * This test simulates a complete user flow on an e-commerce site.
+//  * 
+//  * Steps:
+//  * 1) Register a new account
+//  * 2) Logout after registration
+//  * 3) Login with the same account
+//  * 4) Search for a product and add it to the shopping cart
+//  * 5) Verify cart contents
+//  * 6) Attempt checkout (disabled since feature isn't available on demo site)
+//  **/
 
 import { test, expect, Page } from '@playwright/test';
 import { RegistrationPage } from '../pages/RegistrationPage';
